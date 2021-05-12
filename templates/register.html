@@ -1,0 +1,187 @@
+
+{% block body %}
+{% if session['logged_in'] %}
+<p>You're logged in already!</p>
+{% else %}
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<img src="/static/5.jpg" width="1380" height="200">
+<script language="javascript">
+function check(form)
+{
+	if(form.name.value == "" )
+	{
+		alert("Error Enter Name")
+		return false;
+
+	}
+	if(form.username.value == "" )
+	{
+		alert("Error Enter Username")
+		return false;
+
+	}
+	if(form.password.value == "" )
+	{
+		alert("Error Enter Password")
+		return false;
+
+	}
+	var email = form.emailid.value;
+	atpos = email.indexOf("@");
+	dotpos = email.lastIndexOf(".");
+	if (email == "" || atpos < 1 || ( dotpos - atpos < 2 ))
+	{
+	    alert("Please enter correct email ID")
+	    return false;
+	}
+	if( form.mobile.value == "" || isNaN( form.mobile.value) || form.mobile.value.length != 10 )
+    {
+        alert( "Please provide a Mobile No in the format 123 and 10 Digit." );
+        return false;
+    }
+
+	if(form.type.value == "select" )
+	{
+		alert("Error Select Doctor or Patient")
+		return false;
+
+	}
+
+	else
+	{
+		return true;
+	}
+}
+
+</script>
+<!---
+<table width="20%" bgcolor="FFFFFF" align="left">
+<tr>
+<td><img src="/static/7.jpg" width="300" height="500"></td>
+
+</tr>
+</table>
+<table width="20%" bgcolor="FFFFFF" align="right">
+<tr>
+<td><img src="/static/6.jpg" width="300" height="500"></td>
+
+</tr>
+</table>
+-->
+
+<form action="/register" method="POST">
+<table width="50%" bgcolor="FFFFFF" align="center">
+{%if message%}
+
+   <h4><center><font color="#FFFFF" size=4>{{ message}}</font></center></h4>
+{%endif%}
+<tr>
+<tr>
+<h6><center><font color="#FFFFF" size=5>Doctor and Patient Login</font></center></h6>
+<tr>
+<td colspan=2><center><font size=5><b>Registration</b></font></center></td>
+</tr>
+<tr>
+<td><center>Name:</center></td>
+<td><input type="text" size=25 name="name"></td>
+</tr>
+<tr>
+<td><center>Username:</center></td>
+<td><input type="text" size=25 name="username"></td>
+</tr>
+
+<tr>
+<td><center>Password:</center></td>
+<td><input type="Password" size=25 name="password"></td>
+</tr>
+
+<tr>
+<td><center>Email ID:</center></td>
+<td><input type="text" size=25 name="emailid"></td>
+</tr>
+
+<tr>
+<td><center>Mobile No:<center></td>
+<td><input type="text" size=25 name="mobile"></td>
+</tr>
+
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+<tr>
+<td><center>Type:</td>
+<td>
+
+<select name="type" id="type" size=1>
+  <option value="select">---------------------------------------------------</option>
+  <option value="Doctor">Doctor</option>
+  <option value="Patient">Patient</option>
+</select>
+</td>
+</td>
+</tr>
+<tr>
+<tr>
+<tr>
+<tr>
+<tr>
+<tr>
+<tr>
+<td><center>Speciality:</td>
+<td>
+
+<select name="type" id="type1" size=1>
+  <option value="select">---------------------------------------------------</option>
+  <option value="cardiologist">Cardiologist</option>
+  <option value="icardiologist">Interventional Cardiologist</option>
+  <option value="incardiologist">Invasive Cardiologist</option>
+  <option value="pcardiologist">Pediatric Cardiologist</option>
+</select>
+
+</td>
+</tr>
+</tr>
+</tr>
+</tr>
+</tr>
+
+<tr>
+</tr>
+<tr>
+</tr>
+</tr>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+<tr>
+<td><center><input type="Reset" style="background-color:#34eb8c" ></td>
+<td><input type="submit" onclick="return check(this.form)" value="Register" style="background-color:#34eb8c"></td>
+
+</tr>
+
+</table>
+</form>
+<form action="/loginpage" method="POST">
+<table width="20%" bgcolor="FFFFFF" align="center">
+<tr>
+<td><center><input type="submit" value="Login" style="background-color:#34eb8c"></td>
+
+</tr>
+
+</table>
+</form>
+{% endif %}
+{% endblock %}

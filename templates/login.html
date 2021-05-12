@@ -1,0 +1,142 @@
+
+{% block body %}
+{% if session['logged_in'] %}
+<p>You're logged in already!</p>
+{% else %}
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<img src="/static/5.jpg" width="1400" height="250">
+<script language="javascript">
+function check(form)
+{
+	if(form.username.value == "" || form.password.value == "")
+	{
+		alert("Error Enter Password or Username")
+		return false;
+
+	}
+
+	if(form.type.value == "select" )
+	{
+		alert("Error Select Doctor or Patient")
+		return false;
+
+	}
+	else
+	{
+		return true;
+	}
+}
+function reg()
+{
+	alert("redirect")
+	location.ahref= "/register";
+}
+</script>
+
+
+
+<table width="50%" bgcolor="FFFFFF" align="left">
+<tr>
+<td></td>
+
+</tr>
+</table>
+<table width="50%" bgcolor="FFFFFF" align="right">
+<tr>
+<td></td>
+
+
+</tr>
+</table>
+<form action="/login" method="POST">
+<table width="50%" bgcolor="FFFFFF" align="center">
+{%if message%}
+
+   <h4><center><font color="#FFFFF" size=4>{{ message}}</font></center></h4>
+{%endif%}
+<h2><center><font color="#1a1a1a" size=5>Check Your Heart</font></center></h2>
+
+<tr>
+<td colspan=2><center><font size=5><b>Login</b></font></center></td>
+</tr>
+
+<tr>
+<td><center>Username:</center></td>
+<td><center><input type="text" size=25 name="username"></td>
+</tr>
+
+<tr>
+<td><center>Password:</center></td>
+<td><center><input type="Password" size=25 name="password"></td>
+</tr>
+
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><center>Type:</center></td>
+<td><center>
+
+<select name="type" id="type" size=1 >
+  <option value="select">---------------------------------------------------</option>
+  <option value="Doctor">Doctor</option>
+  <option value="Patient">Patient</option>
+</select>
+</td>
+</tr>
+<tr>
+<tr>
+<tr>
+<tr>
+<tr>
+<tr>
+<tr>
+<tr>
+
+</tr>
+</tr>
+</tr>
+</tr>
+</tr>
+</tr>
+</tr>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+<tr>
+<td><center><input type="Reset" style="background-color:#34eb8c"></center></td>
+<td><center><input type="submit" onclick="return check(this.form)" value="Login" style="background-color:#34eb8c"></center></td>
+
+</tr>
+
+</table>
+</form>
+<form action="/registerpage" method="POST">
+<table width="15%" bgcolor="FFFFFF" align="center">
+<tr>
+<td><input type="submit" value="Register" style="background-color:#34eb8c"></td>
+
+</tr>
+
+</table>
+</form>
+{% endif %}
+{% endblock %}
